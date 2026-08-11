@@ -186,6 +186,84 @@ body::after {
 .bg-slideshow {
     mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
 }
+
+/* Full-screen ambient overlay */
+.ambient-stage {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.ambient-ribbon {
+    position: absolute;
+    left: -12%;
+    width: 124%;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.58), rgba(255, 148, 178, 0.72), rgba(255, 255, 255, 0.5), transparent);
+    box-shadow: 0 0 20px rgba(255, 132, 170, 0.18);
+    mix-blend-mode: screen;
+    opacity: 0.72;
+}
+
+.ribbon-a {
+    top: 16%;
+    transform: rotate(-9deg);
+    animation: ribbonFloatA 14s ease-in-out infinite alternate;
+}
+
+.ribbon-b {
+    top: 50%;
+    transform: rotate(8deg);
+    animation: ribbonFloatB 16s ease-in-out infinite alternate;
+}
+
+.ribbon-c {
+    top: 82%;
+    transform: rotate(-6deg);
+    animation: ribbonFloatC 15s ease-in-out infinite alternate;
+}
+
+.ambient-stars span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 12px rgba(255, 162, 192, 0.7);
+    animation: starPulse 3.2s ease-in-out infinite alternate;
+}
+
+.ambient-stars span:nth-child(2n) {
+    animation-duration: 4.1s;
+}
+
+.ambient-stars span:nth-child(3n) {
+    animation-duration: 5s;
+}
+
+@keyframes ribbonFloatA {
+    0% { transform: translateX(0) rotate(-9deg); opacity: 0.48; }
+    100% { transform: translateX(2%) rotate(-8.5deg); opacity: 0.82; }
+}
+
+@keyframes ribbonFloatB {
+    0% { transform: translateX(0) rotate(8deg); opacity: 0.52; }
+    100% { transform: translateX(-2%) rotate(8.5deg); opacity: 0.84; }
+}
+
+@keyframes ribbonFloatC {
+    0% { transform: translateX(0) rotate(-6deg); opacity: 0.44; }
+    100% { transform: translateX(1.5%) rotate(-5.5deg); opacity: 0.76; }
+}
+
+@keyframes starPulse {
+    0% { transform: scale(0.8); opacity: 0.45; }
+    100% { transform: scale(1.35); opacity: 1; }
+}
+
 /* Canvas Background */
 #heartCanvas {
     position: absolute;
@@ -893,6 +971,30 @@ body::after {
     .open-instruction {
         font-size: 14px;
         margin-top: 20px;
+    }
+
+    .ambient-ribbon {
+        left: -18%;
+        width: 136%;
+        opacity: 0.48;
+    }
+
+    .ribbon-a {
+        top: 14%;
+    }
+
+    .ribbon-b {
+        top: 52%;
+    }
+
+    .ribbon-c {
+        top: 84%;
+    }
+
+    .ambient-stars span {
+        width: 3px;
+        height: 3px;
+        opacity: 0.7;
     }
 
     .letter-title {
