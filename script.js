@@ -209,41 +209,19 @@ if (nextArrow) {
 const envelopeWrapper = document.querySelector('.envelope-wrapper');
 const waxSeal = document.getElementById('waxSeal');
 const letter = document.querySelector('.letter');
-const outsideOpenBtn = document.getElementById('outsideOpenBtn');
-const outsidePrevBtn = document.getElementById('outsidePrevBtn');
-const outsideNextBtn = document.getElementById('outsideNextBtn');
-const outsideBurstBtn = document.getElementById('outsideBurstBtn');
-const outsideHint = document.getElementById('outsideHint');
-
-function ensureLetterOpen() {
-    if (!envelopeWrapper.classList.contains('open')) {
-        envelopeWrapper.classList.add('open');
-        startMusic();
-        startSlideshow();
-    }
-}
-
-function updateOutsideHint(text) {
-    if (outsideHint) {
-        outsideHint.textContent = text;
-    }
-}
-
-function burstHeartsAtElement(el, count = 14) {
-    const rect = el.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    for (let i = 0; i < count; i++) {
-        particles.push(new HeartParticle(x, y, true));
-    }
-}
 
 waxSeal.addEventListener('click', (e) => {
     e.stopPropagation();
     envelopeWrapper.classList.add('open');
     startMusic();
     startSlideshow();
-    burstHeartsAtElement(waxSeal, 15);
+    
+    const rect = waxSeal.getBoundingClientRect();
+    const sealX = rect.left + rect.width / 2;
+    const sealY = rect.top + rect.height / 2;
+    for (let i = 0; i < 15; i++) {
+        particles.push(new HeartParticle(sealX, sealY, true));
+    }
 });
 
 // Close triggers for the letter
@@ -260,46 +238,6 @@ function closeLetter(e) {
 
 closeLetterBtnTop.addEventListener('click', closeLetter);
 closeLetterBtnBottom.addEventListener('click', closeLetter);
-
-if (outsideOpenBtn) {
-    outsideOpenBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        ensureLetterOpen();
-        burstHeartsAtElement(outsideOpenBtn, 10);
-        updateOutsideHint('Thư đã mở, chạm ảnh để đổi kỷ niệm');
-    });
-}
-
-if (outsidePrevBtn) {
-    outsidePrevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        ensureLetterOpen();
-        prevSlide();
-        resetSlideshowTimer();
-        burstHeartsAtElement(outsidePrevBtn, 8);
-        updateOutsideHint(`Đang xem ảnh ${currentSlideIndex + 1}/${slides.length}`);
-    });
-}
-
-if (outsideNextBtn) {
-    outsideNextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        ensureLetterOpen();
-        nextSlide();
-        resetSlideshowTimer();
-        burstHeartsAtElement(outsideNextBtn, 8);
-        updateOutsideHint(`Đang xem ảnh ${currentSlideIndex + 1}/${slides.length}`);
-    });
-}
-
-if (outsideBurstBtn) {
-    outsideBurstBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        ensureLetterOpen();
-        burstHeartsAtElement(outsideBurstBtn, 18);
-        updateOutsideHint('Thả tim cho em thật nhiều');
-    });
-}
 
 
 
