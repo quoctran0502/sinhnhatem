@@ -187,6 +187,155 @@ body::after {
     mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
+/* Full-screen memory stream */
+.memory-stream {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.memory-stream-line {
+    position: absolute;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), rgba(255, 140, 170, 0.65), rgba(255, 255, 255, 0.45), transparent);
+    box-shadow: 0 0 18px rgba(255, 120, 160, 0.16);
+    opacity: 0.7;
+}
+
+.line-a {
+    top: 18%;
+    left: -4%;
+    width: 108%;
+    transform: rotate(-8deg);
+    animation: streamDriftA 12s ease-in-out infinite alternate;
+}
+
+.line-b {
+    top: 76%;
+    left: -6%;
+    width: 112%;
+    transform: rotate(10deg);
+    animation: streamDriftB 14s ease-in-out infinite alternate;
+}
+
+.memory-stamp {
+    position: absolute;
+    width: 150px;
+    height: 190px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    border: 7px solid rgba(255, 255, 255, 0.82);
+    box-shadow:
+        0 20px 48px rgba(89, 41, 56, 0.2),
+        inset 0 0 0 1px rgba(255, 190, 205, 0.18);
+    opacity: 0.65;
+    filter: saturate(1.1) brightness(0.98);
+}
+
+.memory-stamp::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    width: 58px;
+    height: 18px;
+    transform: translateX(-50%) rotate(-3deg);
+    background: rgba(255, 255, 255, 0.74);
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.memory-stamp::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 5px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.12), transparent 30%, rgba(255,255,255,0.06));
+    mix-blend-mode: screen;
+}
+
+.stamp-a {
+    top: 7%;
+    left: 7%;
+    transform: rotate(-10deg);
+    animation: stampFloatA 10s ease-in-out infinite alternate;
+}
+
+.stamp-b {
+    top: 12%;
+    right: 8%;
+    transform: rotate(9deg);
+    animation: stampFloatB 11s ease-in-out infinite alternate;
+}
+
+.stamp-c {
+    left: 50%;
+    bottom: 6%;
+    transform: translateX(-50%) rotate(2deg);
+    animation: stampFloatC 9.5s ease-in-out infinite alternate;
+}
+
+.memory-spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(255, 145, 175, 0.65);
+    opacity: 0.78;
+    animation: sparkPulse 2.8s ease-in-out infinite alternate;
+}
+
+.spark-a {
+    top: 24%;
+    left: 20%;
+}
+
+.spark-b {
+    top: 34%;
+    right: 18%;
+    animation-delay: 0.6s;
+}
+
+.spark-c {
+    bottom: 22%;
+    left: 62%;
+    animation-delay: 1.1s;
+}
+
+@keyframes streamDriftA {
+    0% { transform: translateY(0) rotate(-8deg); opacity: 0.62; }
+    100% { transform: translateY(8px) rotate(-8.5deg); opacity: 0.78; }
+}
+
+@keyframes streamDriftB {
+    0% { transform: translateY(0) rotate(10deg); opacity: 0.58; }
+    100% { transform: translateY(-8px) rotate(9.5deg); opacity: 0.76; }
+}
+
+@keyframes stampFloatA {
+    0% { transform: rotate(-10deg) translateY(0); }
+    100% { transform: rotate(-8deg) translateY(-10px); }
+}
+
+@keyframes stampFloatB {
+    0% { transform: rotate(9deg) translateY(0); }
+    100% { transform: rotate(11deg) translateY(10px); }
+}
+
+@keyframes stampFloatC {
+    0% { transform: translateX(-50%) rotate(2deg) translateY(0); }
+    100% { transform: translateX(-50%) rotate(0deg) translateY(-8px); }
+}
+
+@keyframes sparkPulse {
+    0% { transform: scale(0.9); opacity: 0.45; }
+    100% { transform: scale(1.35); opacity: 0.95; }
+}
+
 /* Outer memory frames */
 .outer-memory-layer {
     position: fixed;
@@ -1006,6 +1155,35 @@ body::after {
     .open-instruction {
         font-size: 12px;
         margin-top: 20px;
+    }
+
+    .memory-stamp {
+        width: 92px;
+        height: 120px;
+        border-width: 4px;
+        opacity: 0.48;
+    }
+
+    .line-a {
+        top: 14%;
+    }
+
+    .line-b {
+        top: 80%;
+    }
+
+    .stamp-a {
+        top: 7%;
+        left: 4%;
+    }
+
+    .stamp-b {
+        top: 8%;
+        right: 4%;
+    }
+
+    .stamp-c {
+        bottom: 5%;
     }
 
     .outer-memory {
