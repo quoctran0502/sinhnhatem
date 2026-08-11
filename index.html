@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Bae 💖</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-slideshow">
+        <div class="bg-slide active" style="background-image: url('images/girl_1.png');"></div>
+        <div class="bg-slide" style="background-image: url('images/girl_2.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('images/girl_3.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('images/girl_4.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('images/girl_5.jpg');"></div>
+        <div class="bg-overlay"></div>
+    </div>
+
+    <canvas id="heartCanvas"></canvas>
+
+    <button id="musicToggle" class="music-btn" aria-label="Bật hoặc tắt nhạc">
+        <svg viewBox="0 0 24 24" class="music-icon" aria-hidden="true">
+            <path fill="currentColor" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+        <span class="music-tooltip">Bật nhạc lãng mạn</span>
+    </button>
+
+    <main class="container">
+        <section class="envelope-wrapper" aria-label="Thiệp sinh nhật">
+            <div class="envelope">
+                <div class="letter">
+                    <button class="close-letter-btn-top" id="closeLetterBtnTop" aria-label="Đóng thư">×</button>
+
+                    <div class="letter-content">
+                        <div class="letter-photo-slider">
+                            <button class="slider-arrow slider-arrow-prev" type="button" aria-label="Ảnh trước">
+                                <span aria-hidden="true">‹</span>
+                            </button>
+                            <div class="slides-container">
+                                <div class="slide active">
+                                    <div class="polaroid-wrapper">
+                                        <img src="images/girl_1.png" alt="Khoảnh khắc đáng yêu 1">
+                                        <div class="polaroid-caption">Xinh đẹp nhất hôm nay</div>
+                                    </div>
+                                </div>
+                                <div class="slide">
+                                    <div class="polaroid-wrapper">
+                                        <img src="images/girl_2.jpg" alt="Khoảnh khắc đáng yêu 2">
+                                        <div class="polaroid-caption">Nụ cười làm tim anh dịu lại</div>
+                                    </div>
+                                </div>
+                                <div class="slide">
+                                    <div class="polaroid-wrapper">
+                                        <img src="images/girl_3.jpg" alt="Khoảnh khắc đáng yêu 3">
+                                        <div class="polaroid-caption">Mỗi ngày bên em đều đáng nhớ</div>
+                                    </div>
+                                </div>
+                                <div class="slide">
+                                    <div class="polaroid-wrapper">
+                                        <img src="images/girl_4.jpg" alt="Khoảnh khắc đáng yêu 4">
+                                        <div class="polaroid-caption">Em là điều đẹp nhất anh giữ trong lòng</div>
+                                    </div>
+                                </div>
+                                <div class="slide">
+                                    <div class="polaroid-wrapper">
+                                        <img src="images/girl_5.jpg" alt="Khoảnh khắc đáng yêu 5">
+                                        <div class="polaroid-caption">Mình cùng đi thật lâu nhé</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="slider-arrow slider-arrow-next" type="button" aria-label="Ảnh tiếp theo">
+                                <span aria-hidden="true">›</span>
+                            </button>
+                            <div class="slider-dots" aria-label="Chọn ảnh">
+                                <span class="dot active" aria-hidden="true">❤</span>
+                                <span class="dot" aria-hidden="true">❤</span>
+                                <span class="dot" aria-hidden="true">❤</span>
+                                <span class="dot" aria-hidden="true">❤</span>
+                                <span class="dot" aria-hidden="true">❤</span>
+                            </div>
+                        </div>
+
+                        <h2 class="letter-title">Gửi em, người anh thương nhất</h2>
+                        <div class="letter-divider"></div>
+
+                        <p class="letter-text">
+                            Chúc mừng sinh nhật em. Anh mong hôm nay và cả những ngày sau nữa, em luôn được bình yên, được yêu thương và được sống đúng với sự dịu dàng rất riêng của mình.
+                        </p>
+                        <p class="letter-text">
+                            Cảm ơn em vì đã đến, vì đã cho anh những phút giây vừa vui, vừa nhớ, vừa muốn trân trọng thật nhiều. Dù đôi lúc chúng mình chưa thật hoàn hảo, anh vẫn muốn ở lại, lắng nghe em nhiều hơn và cùng em đi tiếp thật tử tế.
+                        </p>
+                        <p class="letter-text">
+                            Sinh nhật này là một cột mốc đẹp. Nhưng điều anh mong hơn cả là em sẽ còn có rất nhiều ngày đẹp hơn phía trước, với tiếng cười, với những điều em yêu, và với anh ở cạnh em.
+                        </p>
+
+                        <p class="letter-signature">Love you, my bae. 🌷</p>
+
+                        <div class="close-letter-wrapper">
+                            <button class="close-letter-btn-bottom" id="closeLetterBtnBottom">Gấp thư lại</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flap top-flap"></div>
+                <div class="flap left-flap"></div>
+                <div class="flap right-flap"></div>
+                <div class="flap bottom-flap"></div>
+
+                <div class="wax-seal" id="waxSeal">
+                    <div class="seal-heart">❤</div>
+                </div>
+            </div>
+
+            <div class="open-instruction">
+                Nhấn vào <span>trái tim</span> để mở thư nhé ✨
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
