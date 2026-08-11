@@ -501,6 +501,9 @@ body::after {
     touch-action: pan-y;
     cursor: grab;
     grid-column: 2;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .slides-container:active {

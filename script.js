@@ -98,6 +98,7 @@ let currentSlideIndex = 0;
 let slideshowIntervalId = null;
 let swipeStartX = 0;
 let swipeStartY = 0;
+let swipePointerId = null;
 let swipeActive = false;
 
 function showSlide(index) {
@@ -152,19 +153,23 @@ dots.forEach((dot, index) => {
 
 // Swipe gesture on the photo area to move between images
 if (sliderViewport) {
-    sliderViewport.addEventListener('touchstart', (e) => {
-        const touch = e.touches[0];
-        swipeStartX = touch.clientX;
-        swipeStartY = touch.clientY;
+    sliderViewport.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        swipePointerId = e.pointerId;
+        swipeStartX = e.clientX;
+        swipeStartY = e.clientY;
         swipeActive = true;
-    }, { passive: true });
+        try {
+            sliderViewport.setPointerCapture(e.pointerId);
+        } catch (_) {}
+    });
 
-    sliderViewport.addEventListener('touchend', (e) => {
-        if (!swipeActive) return;
-        const touch = e.changedTouches[0];
-        const dx = touch.clientX - swipeStartX;
-        const dy = touch.clientY - swipeStartY;
+    sliderViewport.addEventListener('pointerup', (e) => {
+        if (!swipeActive || swipePointerId !== e.pointerId) return;
+        const dx = e.clientX - swipeStartX;
+        const dy = e.clientY - swipeStartY;
         swipeActive = false;
+        swipePointerId = null;
 
         if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
 
@@ -174,7 +179,13 @@ if (sliderViewport) {
             prevSlide();
         }
         resetSlideshowTimer();
-    }, { passive: true });
+    });
+
+    sliderViewport.addEventListener('pointercancel', () => {
+        swipeActive = false;
+        swipePointerId = null;
+    });
+
 }
 
 if (prevArrow) {
