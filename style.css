@@ -187,6 +187,118 @@ body::after {
     mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
+/* Outer memory frames */
+.outer-memory-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.outer-memory {
+    position: absolute;
+    width: 120px;
+    height: 150px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    border: 6px solid rgba(255, 255, 255, 0.78);
+    box-shadow:
+        0 16px 40px rgba(109, 50, 69, 0.18),
+        inset 0 0 0 1px rgba(255, 170, 190, 0.22);
+    filter: saturate(1.08) brightness(0.98);
+    opacity: 0.78;
+}
+
+.outer-memory::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 52px;
+    height: 16px;
+    transform: translateX(-50%) rotate(-4deg);
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+.outer-memory::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.12), transparent 34%, rgba(255,255,255,0.08));
+    mix-blend-mode: screen;
+}
+
+.outer-memory-a {
+    top: 78px;
+    left: 42px;
+    transform: rotate(-10deg);
+    animation: memoryFloatA 8s ease-in-out infinite alternate;
+}
+
+.outer-memory-b {
+    top: 76px;
+    right: 54px;
+    transform: rotate(8deg);
+    animation: memoryFloatB 9s ease-in-out infinite alternate;
+}
+
+.outer-memory-c {
+    left: 54px;
+    bottom: 72px;
+    transform: rotate(11deg);
+    animation: memoryFloatC 10s ease-in-out infinite alternate;
+}
+
+.outer-memory-d {
+    right: 52px;
+    bottom: 64px;
+    transform: rotate(-8deg);
+    animation: memoryFloatD 8.5s ease-in-out infinite alternate;
+}
+
+.outer-memory-threads {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.35) 0 1px, transparent 2px),
+        radial-gradient(circle at 82% 19%, rgba(255, 255, 255, 0.35) 0 1px, transparent 2px),
+        radial-gradient(circle at 18% 82%, rgba(255, 255, 255, 0.35) 0 1px, transparent 2px),
+        radial-gradient(circle at 82% 81%, rgba(255, 255, 255, 0.35) 0 1px, transparent 2px),
+        linear-gradient(90deg, transparent 0 18%, rgba(255, 255, 255, 0.14) 18.2% 18.4%, transparent 18.6% 81.4%, rgba(255, 255, 255, 0.14) 81.6% 81.8%, transparent 82% 100%),
+        linear-gradient(0deg, transparent 0 20%, rgba(255, 255, 255, 0.1) 20.2% 20.4%, transparent 20.6% 79.4%, rgba(255, 255, 255, 0.1) 79.6% 79.8%, transparent 80% 100%);
+    opacity: 0.55;
+    animation: threadGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes memoryFloatA {
+    0% { transform: translateY(0) rotate(-10deg) scale(1); }
+    100% { transform: translateY(-10px) rotate(-7deg) scale(1.02); }
+}
+
+@keyframes memoryFloatB {
+    0% { transform: translateY(0) rotate(8deg) scale(1); }
+    100% { transform: translateY(9px) rotate(11deg) scale(1.02); }
+}
+
+@keyframes memoryFloatC {
+    0% { transform: translateY(0) rotate(11deg) scale(1); }
+    100% { transform: translateY(-8px) rotate(8deg) scale(1.03); }
+}
+
+@keyframes memoryFloatD {
+    0% { transform: translateY(0) rotate(-8deg) scale(1); }
+    100% { transform: translateY(10px) rotate(-5deg) scale(1.02); }
+}
+
+@keyframes threadGlow {
+    0% { opacity: 0.38; }
+    100% { opacity: 0.62; }
+}
+
 /* Canvas Background */
 #heartCanvas {
     position: absolute;
@@ -894,5 +1006,32 @@ body::after {
     .open-instruction {
         font-size: 12px;
         margin-top: 20px;
+    }
+
+    .outer-memory {
+        width: 78px;
+        height: 98px;
+        border-width: 4px;
+        opacity: 0.48;
+    }
+
+    .outer-memory-a {
+        top: 62px;
+        left: 10px;
+    }
+
+    .outer-memory-b {
+        top: 58px;
+        right: 10px;
+    }
+
+    .outer-memory-c {
+        left: 10px;
+        bottom: 58px;
+    }
+
+    .outer-memory-d {
+        right: 10px;
+        bottom: 54px;
     }
 }
